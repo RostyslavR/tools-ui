@@ -1,0 +1,136 @@
+import React, { useRef, useState } from "react";
+import { iUser } from "../../services/iAxios";
+import { Loader } from "../Loader/Loader";
+import { GoodList } from "../GoodList/GoodList";
+import { FileList } from "../FileList/FileList";
+import "./InputBlock.css";
+
+const InputBlock = () => {
+  const [link, setLink] = useState("https://comfortshoesottawa.com");
+  const [qParams, setQParams] = useState("");
+  // const [selectedFile, setSelectedFile] = useState("");
+  const [resChecking, setResChecking] = useState({ status: "", goodlinks: [] });
+  const [resFind, setResFind] = useState({ status: "", products: [] });
+  const [checkingFile, setCheckingFile] = useState({
+    status: "",
+    fileList: [],
+  });
+  const [resPutFile, setResPutFile] = useState("");
+  const filePicker = useRef(null);
+
+  const handleFind = async () => {
+    if (qParams && link) {
+      try {
+        setResFind({ status: "isLoading" });
+        const { data } = await iUser.post("/api/files/findprod", {
+          link,
+          qParams,
+        });
+        setResFind(data);
+        // setResFind({ status: "Ok", products: [] });
+        // setResFind({ ...data });
+      } catch (error) {
+        setResFind({ status: error.message, products: [] });
+        console.log(error);
+      }
+    }
+  };
+
+  const handleCheckLink = async () => {
+    if (link) {
+      try {
+        setResChecking({ status: "isLoading" });
+        const { data } = await iUser.post("/api/files/check", { link });
+        setResChecking({ ...data });
+      } catch (error) {
+        setResChecking({ status: error.message, goodlinks: [] });
+        console.log(error);
+      }
+    }
+  };
+
+  const resetLinkFile = () => {
+    filePicker.current.value = "";
+  };
+
+  const handleCheckFile = async () => {
+    if (resPutFile === "Ok") {
+      try {
+        setCheckingFile({ status: "isLoading" });
+        const { data } = await iUser.get("/api/files/checkfile");
+        setCheckingFile({ ...data });
+      } catch (error) {
+        setCheckingFile({ status: error.message, fileList: [] });
+        console.log(error);
+      }
+    }
+  };
+
+  const putFile = async ({ target: { name, files } }) => {
+    if (files.length > 0) {
+      try {
+        const { status } = await iUser.putForm("/api/files/", {
+          [name]: files[0],
+        });
+        status && setResPutFile("Ok");
+      } catch (error) {
+        setResPutFile(error.message);
+      }
+    } else {
+      setResPutFile("");
+    }
+  };
+
+  return (
+    <div className="input-block">
+      <input
+        placeholder="input link"
+        type="text"
+        value={link}
+        onChange={(e) => setLink(e.target.value)}
+      />
+      <button onClick={handleCheckLink}>check link</button>
+      <p>{resChecking.status}</p>
+      {resChecking.status === "isLoading" ? (
+        <Loader />
+      ) : (
+        <GoodList list={resChecking.goodlinks} />
+      )}
+      <input
+        placeholder="input qParams"
+        type="text"
+        value={qParams}
+        onChange={(e) => setQParams(e.target.value)}
+      />
+      <button onClick={handleFind}>find</button>
+      <p>{resFind.status}</p>
+      {resFind.status === "isLoading" ? (
+        <Loader />
+      ) : (
+        <GoodList list={resFind.products} />
+      )}
+      <div className="chkfile-block">
+        <input type="button" onClick={resetLinkFile} value={"X"} />{" "}
+        <input
+          placeholder="input file"
+          type="file"
+          name="linkFile"
+          ref={filePicker}
+          accept=".xls,.xlsx,.txt,.csv"
+          onChange={putFile}
+        />
+        <button className="chkfile-btn" onClick={handleCheckFile}>
+          check file
+        </button>
+      </div>
+      <p>{checkingFile.status}</p>
+      {checkingFile.status === "isLoading" ? (
+        <Loader />
+      ) : (
+        // <Loader />
+        <FileList list={checkingFile.fileList} />
+      )}
+    </div>
+  );
+};
+export { InputBlock };

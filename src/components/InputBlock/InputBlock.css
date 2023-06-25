@@ -1,0 +1,24 @@
+.input-block {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  gap: 20px;
+  /* height: 100%; */
+  padding: 20px;
+  margin: 20px;
+  border-radius: 20px;
+  background-color: rgb(103, 226, 201);
+}
+
+.chkfile-block {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-evenly; */
+}
+
+.chkfile-btn {
+  width: 150px;
+  height: 30px;
+  border-radius: 4px;
+  /* background-color: darkorchid; */
+}

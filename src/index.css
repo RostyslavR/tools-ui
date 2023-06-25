@@ -1,0 +1,92 @@
+:root {
+  font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #766a92;
+  /* color: #ebd8ff; */
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+button,
+select {
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  user-select: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.home-page {
+  display: flex;
+  justify-content: center;
+  height: 45vw;
+  width: 100%;
+  font-weight: 600;
+  font-size: 10vw;
+  box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
+  border-radius: 10.3108px;
+  user-select: none;
+  background-image: url("./images/background-home.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.checklink-page {
+  display: flex;
+  justify-content: center;
+  height: 700px;
+  width: 100%;
+  background-image: url("./images/background-checklink.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
