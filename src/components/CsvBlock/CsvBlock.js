@@ -89,7 +89,13 @@ const CsvBlock = () => {
           etc={{ optionList: fields, handler: handleSelectedFields }}
         />
       </div>
-      <button className="chkfile-btn" onClick={combineFiles}>
+      <button
+        className={`app-do-btn ${
+          merginFiles.status === "isLoading" ? "notActive" : ""
+        } 
+        }`}
+        onClick={combineFiles}
+      >
         combine files
       </button>
       <p>{merginFiles.status}</p>

@@ -105,7 +105,15 @@ const InputBlock = () => {
         value={link}
         onChange={(e) => setLink(e.target.value)}
       />
-      <button onClick={handleCheckLink}>check link</button>
+      <button
+        className={`app-do-btn ${
+          resChecking.status === "isLoading" ? "notActive" : ""
+        } 
+        }`}
+        onClick={handleCheckLink}
+      >
+        check link
+      </button>
       <p>{resChecking.status}</p>
       {resChecking.status === "isLoading" ? (
         <Loader />
@@ -118,7 +126,15 @@ const InputBlock = () => {
         value={qParams}
         onChange={(e) => setQParams(e.target.value)}
       />
-      <button onClick={handleFind}>find</button>
+      <button
+        className={`app-do-btn ${
+          resFind.status === "isLoading" ? "notActive" : ""
+        } 
+        }`}
+        onClick={handleFind}
+      >
+        find
+      </button>
       <p>{resFind.status}</p>
       {resFind.status === "isLoading" ? (
         <Loader />
@@ -135,7 +151,13 @@ const InputBlock = () => {
           accept=".xls,.xlsx,.txt,.csv"
           // onChange={putFile}
         />
-        <button className="chkfile-btn" onClick={checkFile}>
+        <button
+          className={`app-do-btn ${
+            checkingFile.status === "isLoading" ? "notActive" : ""
+          } 
+        }`}
+          onClick={checkFile}
+        >
           check file
         </button>
       </div>

@@ -22,3 +22,46 @@
 /* .read-the-docs {
   color: #888;
 } */
+
+.app-do-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding: 14px 28px; */
+
+  width: 196px;
+  height: 50px;
+  margin: 0 auto;
+
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  text-transform: uppercase;
+  color: #373737;
+
+  background: #ebd8ff;
+  /* border: none; */
+  box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
+  border-radius: 10.3108px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.app-do-btn:hover {
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+  /* transform: translateY(-1px); */
+}
+
+.app-do-btn:active {
+  background-color: #5cd3a8;
+  box-shadow: 0 5px #373737;
+  transform: translateY(2px);
+}
+
+/* .app-do-btn.isFollowing {
+  background: #5cd3a8;
+} */
+
+.notActive {
+  pointer-events: none;
+}
