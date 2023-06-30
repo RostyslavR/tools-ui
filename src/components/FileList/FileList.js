@@ -1,6 +1,6 @@
 import "./FileList.css";
 
-const SERVER = process.env.REACT_APP_SERVER;
+const SERVER = process.env.REACT_APP_SERVER || "http://localhost:5300";
 
 const FileList = ({ list }) => {
   return (

@@ -1,0 +1,87 @@
+.wrapper {
+  position: relative;
+  /* display: flex; */
+  /* width: 100%; */
+  /* color: ${({ theme: { colors } }) => colors.blackText}; */
+  /* background-color: ${({ theme: { colors } }) => colors.whiteBackgroundToBlack}; */
+}
+
+/* .input-wrapper { */
+/* display: flex; */
+/* width: 100%; */
+/* } */
+
+/* .input-field { */
+/* width: 100%; */
+
+/* font-family: ${({ theme: { fonts } }) => fonts.primary};
+  font-size: 14px;
+  font-weight: ${({ theme: { fontWeights } }) => fontWeights.regular};
+  color: ${({ theme: { colors } }) => colors.primaryDarkText};
+  background-color: ${({ theme: { colors } }) => colors.whiteBackgroundToBlack}; */
+
+/* outline: none; */
+/* height: ${({ height }) => (height ? height : "40px")}; */
+/* border: none; */
+/* border-bottom: 1px solid black; */
+
+/* @media (min-width: ${({ theme: { devices } }) => devices.tablet}) {
+    font-size: 18px;
+  } */
+/* } */
+
+.control-btn {
+  position: absolute;
+  top: 50%;
+  right: 2px;
+
+  border: none;
+  background-color: inherit;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.option-list {
+  position: absolute;
+  top: 38px;
+  left: 0;
+  z-index: 1;
+  max-height: 180px;
+  width: 100%;
+  overflow: auto;
+  list-style-type: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+
+  /* font-family: ${({ theme: { fonts } }) => fonts.primary};
+  font-size: 14px;
+  font-weight: ${({ theme: { fontWeights } }) => fontWeights.regular};
+  color: ${({ theme: { colors } }) => colors.primaryDarkText};
+  background-color: ${({ theme: { colors } }) => colors.lightSelector}; */
+  background-color: beige;
+  border: none;
+  border-radius: 4px;
+
+  /* @media (min-width: ${({ theme: { devices } }) => devices.tablet}) {
+    font-size: 18px;
+  } */
+}
+
+.option-item {
+  padding: 8px;
+  /* color: opacity 0.5; */
+  /* color: beige; */
+  cursor: pointer;
+  &:hover {
+    color: rgb(18, 2, 33);
+    color: opacity 1;
+  }
+}
+
+.chevron {
+  transition: transform 0.5s ease-in-out;
+}
+.chevron.open {
+  transform: rotate(180deg);
+}

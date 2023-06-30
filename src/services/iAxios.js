@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const { REACT_APP_SERVER } = process.env;
+const SERVER = process.env.REACT_APP_SERVER || "http://localhost:5300";
 
 const iUser = axios.create({
-  baseURL: REACT_APP_SERVER,
+  baseURL: SERVER,
 });
 
 const setToken = (token) => {

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { iUser } from "../../services/iAxios";
 import { Loader } from "../Loader/Loader";
 import { GoodList } from "../GoodList/GoodList";
@@ -70,7 +70,7 @@ const InputBlock = () => {
     if (filePicker.current.files.length > 0) {
       setCheckingFile({ status: "isLoading" });
       try {
-        const { data } = await iUser.putForm("/api/files/checkfile", {
+        const { data } = await iUser.postForm("/api/files/checkfile", {
           [filePicker.current.name]: filePicker.current.files[0],
         });
         setCheckingFile({ ...data });
@@ -143,7 +143,6 @@ const InputBlock = () => {
       {checkingFile.status === "isLoading" ? (
         <Loader />
       ) : (
-        // <Loader />
         <FileList list={checkingFile.fileList} />
       )}
     </div>

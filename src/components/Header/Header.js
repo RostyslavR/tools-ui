@@ -17,7 +17,8 @@ const Header = () => {
       />
       <nav className="nav-menu">
         <NavLink to="/">Home</NavLink>
-        <NavLink to="/CheckLink">CheckLink</NavLink>
+        <NavLink to="/checklink">CheckLink</NavLink>
+        <NavLink to="/combinefiles">CombineFiles</NavLink>
       </nav>
     </header>
   );
