@@ -10,6 +10,7 @@ import { similarValues } from "../../lib";
 import "./CsvBlock.css";
 
 const CsvBlock = () => {
+  const [preparing, setPreparing] = useState({ status: "isPreparing" });
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [headers, setHeaders] = useState([]);
   const [fields, setFields] = useState([]);
@@ -23,6 +24,7 @@ const CsvBlock = () => {
   const filePicker = useRef(null);
 
   const handleSelectedFiles = async (e) => {
+    setPreparing({ status: "isPreparing" });
     if (e.target.files.length > 0) {
       const fd = new FormData();
       for (let i = 0; i < e.target.files.length; i++) {
@@ -41,6 +43,7 @@ const CsvBlock = () => {
       } catch (error) {
         console.log(error);
       }
+      setPreparing({ status: "" });
     }
   };
 
@@ -91,7 +94,10 @@ const CsvBlock = () => {
       </div>
       <button
         className={`app-do-btn ${
-          merginFiles.status === "isLoading" ? "notActive" : ""
+          merginFiles.status === "isLoading" ||
+          preparing.status === "isPreparing"
+            ? "notActive"
+            : ""
         } 
         }`}
         onClick={combineFiles}
