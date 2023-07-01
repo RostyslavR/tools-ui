@@ -6,7 +6,6 @@ import { FileList } from "../FileList/FileList";
 import { HeaderList } from "../HeaderList/HeaderList";
 import { FieldList } from "../FieldList/FieldList";
 
-// import { similarValues } from "../../lib";
 import "./CsvBlock.css";
 
 const CsvBlock = () => {
@@ -34,10 +33,10 @@ const CsvBlock = () => {
       try {
         const { data } = await iUser.postForm("/api/files/csvprepare", fd);
         const { files, headers, fields, difStructure } = data;
-        // const similar = similarValues(headers, fields);
-
-        const similar = headers.map((h) => fields.find((f) => f.includes(h)));
-
+        const similar = headers.map((h) => {
+          const res = fields.find((f) => f.includes(h));
+          return res !== undefined ? res : "";
+        });
         setSelectedFields([...similar]);
         setSelectedFiles([...files]);
         setHeaders([...headers]);

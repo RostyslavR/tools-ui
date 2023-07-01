@@ -3,18 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./AutoInput.css";
 import chevron from "./chevron.svg";
 
-export const AutoInput = ({
-  value = "",
-  etc,
-
-  //   field,
-  //   addText = "",
-  //   inputName,
-  //   handleAutoinput,
-  //   height,
-  //   width,
-  //   flexGrow,
-}) => {
+export const AutoInput = ({ value = "", etc }) => {
   const { optionList: list = [], idx: fieldIndex, handler } = etc;
 
   const [inputValue, setInputValue] = useState(value);
@@ -31,6 +20,11 @@ export const AutoInput = ({
 
     handler({ idx: fieldIndex, value: options[idx] });
   };
+
+  useEffect(() => {
+    setSelectedValue(value);
+    setInputValue(value);
+  }, [value]);
 
   useEffect(() => {
     !isOptionsListOpen && inputValue !== selectedValue && setInputValue("");
