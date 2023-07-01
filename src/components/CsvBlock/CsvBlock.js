@@ -6,11 +6,11 @@ import { FileList } from "../FileList/FileList";
 import { HeaderList } from "../HeaderList/HeaderList";
 import { FieldList } from "../FieldList/FieldList";
 
-import { similarValues } from "../../lib";
+// import { similarValues } from "../../lib";
 import "./CsvBlock.css";
 
 const CsvBlock = () => {
-  const [preparing, setPreparing] = useState({ status: "isPreparing" });
+  const [preparing, setPreparing] = useState({ status: "" });
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [headers, setHeaders] = useState([]);
   const [fields, setFields] = useState([]);
@@ -33,17 +33,21 @@ const CsvBlock = () => {
 
       try {
         const { data } = await iUser.postForm("/api/files/csvprepare", fd);
+        const { files, headers, fields, difStructure } = data;
+        // const similar = similarValues(headers, fields);
 
-        const similar = similarValues(data.headers, data.fields);
+        const similar = headers.map((h) => fields.find((f) => f.includes(h)));
+
         setSelectedFields([...similar]);
-        setSelectedFiles([...data.files]);
-        setHeaders([...data.headers]);
-        setFields([...data.fields]);
-        setDifStructure(data.difStructure);
+        setSelectedFiles([...files]);
+        setHeaders([...headers]);
+        setFields([...fields]);
+        setDifStructure(difStructure);
+        setPreparing({ status: "Ok" });
       } catch (error) {
+        setPreparing({ status: "" });
         console.log(error);
       }
-      setPreparing({ status: "" });
     }
   };
 
@@ -74,7 +78,7 @@ const CsvBlock = () => {
   };
 
   return (
-    <div>
+    <div className="csv-block">
       <input
         type="file"
         multiple
@@ -84,7 +88,11 @@ const CsvBlock = () => {
         onChange={handleSelectedFiles}
       ></input>
       {difStructure && <p>files have defferent strustures</p>}
-      <FileList list={selectedFiles} />
+      {preparing.status === "isPreparing" ? (
+        <Loader />
+      ) : (
+        <FileList list={selectedFiles} />
+      )}
       <div className="headers">
         <HeaderList list={headers} handler={handleHeaders} />
         <FieldList
@@ -94,8 +102,7 @@ const CsvBlock = () => {
       </div>
       <button
         className={`app-do-btn ${
-          merginFiles.status === "isLoading" ||
-          preparing.status === "isPreparing"
+          merginFiles.status === "isLoading" || preparing.status !== "Ok"
             ? "notActive"
             : ""
         } 
