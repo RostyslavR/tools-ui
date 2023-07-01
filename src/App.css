@@ -41,27 +41,61 @@
 
   background: #ebd8ff;
   /* border: none; */
-  box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
-  border-radius: 10.3108px;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+  /* border-radius: 10px; */
+  border-radius: 0.5em;
   cursor: pointer;
   user-select: none;
+
+  &:hover {
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+    /* transform: translateY(-1px); */
+  }
+
+  &:active {
+    background-color: #5cd3a8;
+    /* box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25); */
+    /* box-shadow: 0 5px 5px #373737; */
+    /* transform: translateY(2px); */
+  }
 }
 
-.app-do-btn:hover {
-  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
-  /* transform: translateY(-1px); */
+.app-input {
+  /* background-color: inherit; */
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #444;
 }
 
-.app-do-btn:active {
-  background-color: #5cd3a8;
-  box-shadow: 0 5px #373737;
-  transform: translateY(2px);
+.app-input-file::file-selector-button {
+  border: 2px solid #6c5ce7;
+  padding: 0.2em 0.4em;
+  border-radius: 0.5em;
+  background-color: #00cec9;
+  transition: 0.5s;
 }
-
-/* .app-do-btn.isFollowing {
-  background: #5cd3a8;
-} */
+.app-input-file::file-selector-button:hover {
+  background-color: #81ecec;
+  border: 2px solid #00cec9;
+  cursor: pointer;
+}
+.app-input-btn {
+  border: 2px solid #6c5ce7;
+  padding: 0.2em 0.4em;
+  border-radius: 0.5em;
+  background-color: #00cec9;
+  transition: 0.5s;
+  &:hover {
+    background-color: #81ecec;
+    border: 2px solid #00cec9;
+    cursor: pointer;
+  }
+}
 
 .notActive {
   pointer-events: none;
+  background-color: #5cd3a8;
+  opacity: 0.5;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+  /* box-shadow: none; */
 }

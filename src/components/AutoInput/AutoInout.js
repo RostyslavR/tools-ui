@@ -54,7 +54,7 @@ export const AutoInput = ({ value = "", etc }) => {
     <div className="wrapper" ref={ref}>
       <div className="input-wrapper">
         <input
-          className="input-field"
+          className="app-input"
           //   name={inputName}
           type="text"
           value={inputValue}

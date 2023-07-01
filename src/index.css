@@ -54,6 +54,10 @@ select {
   user-select: none;
 }
 
+input {
+  outline: none;
+}
+
 img {
   max-width: 100%;
   display: block;

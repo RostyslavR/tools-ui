@@ -17,6 +17,7 @@ const FileItem = ({ item, idx, handler }) => {
     <>
       {/* <p>{item}</p> */}
       <input
+        className="app-input"
         type="text"
         value={item}
         onChange={(e) => handler({ idx, value: e.target.value })}

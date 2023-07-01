@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 import { iUser } from "../../services/iAxios";
 import { Loader } from "../Loader/Loader";
@@ -20,14 +20,18 @@ const CsvBlock = () => {
     fileList: [],
   });
 
-  const filePicker = useRef(null);
-
   const handleSelectedFiles = async (e) => {
+    const { name, files } = e.target;
     setPreparing({ status: "isPreparing" });
-    if (e.target.files.length > 0) {
+    setMerginFiles({
+      status: "",
+      fileList: [],
+    });
+
+    if (files.length > 0) {
       const fd = new FormData();
-      for (let i = 0; i < e.target.files.length; i++) {
-        fd.append("files", e.target.files[i]);
+      for (let i = 0; i < files.length; i++) {
+        fd.append(name, files[i]);
       }
 
       try {
@@ -79,9 +83,9 @@ const CsvBlock = () => {
   return (
     <div className="csv-block">
       <input
+        className="app-input-file"
         type="file"
         multiple
-        ref={filePicker}
         name="files"
         accept=".csv"
         onChange={handleSelectedFiles}
@@ -101,7 +105,9 @@ const CsvBlock = () => {
       </div>
       <button
         className={`app-do-btn ${
-          merginFiles.status === "isLoading" || preparing.status !== "Ok"
+          preparing.status !== "Ok" ||
+          merginFiles.status === "isLoading" ||
+          merginFiles.fileList.length > 0
             ? "notActive"
             : ""
         } 

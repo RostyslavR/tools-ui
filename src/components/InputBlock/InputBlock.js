@@ -100,6 +100,7 @@ const InputBlock = () => {
   return (
     <div className="input-block">
       <input
+        className="app-input"
         placeholder="input link"
         type="text"
         value={link}
@@ -121,6 +122,7 @@ const InputBlock = () => {
         <GoodList list={resChecking.goodlinks} />
       )}
       <input
+        className="app-input"
         placeholder="input qParams"
         type="text"
         value={qParams}
@@ -142,8 +144,14 @@ const InputBlock = () => {
         <GoodList list={resFind.products} />
       )}
       <div className="chkfile-block">
-        <input type="button" onClick={resetLinkFile} value={"X"} />{" "}
         <input
+          className="app-input-btn"
+          type="button"
+          onClick={resetLinkFile}
+          value={"X"}
+        />
+        <input
+          className="app-input-file"
           placeholder="input file"
           type="file"
           name="linkFile"

@@ -70,12 +70,10 @@
 
 .option-item {
   padding: 8px;
-  /* color: opacity 0.5; */
-  /* color: beige; */
   cursor: pointer;
   &:hover {
-    color: rgb(18, 2, 33);
-    color: opacity 1;
+    color: rgb(119, 114, 123);
+    background-color: aqua;
   }
 }
 
