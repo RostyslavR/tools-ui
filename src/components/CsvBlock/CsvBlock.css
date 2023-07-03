@@ -1,0 +1,30 @@
+.csv-block {
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* width: 800px; */
+  /* gap: 20px; */
+  padding: 20px;
+  /* margin: 20px; */
+  /* border-radius: 20px; */
+  /* background-color: rgb(103, 226, 201); */
+}
+
+.headers {
+  display: flex;
+  gap: 10px;
+  height: 150px;
+  padding-bottom: 20px;
+  overflow: auto;
+}
+
+.headers-label {
+  display: flex;
+  gap: 150px;
+  padding: 10px 0;
+}
+
+.setting-block {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}

@@ -54,6 +54,15 @@ select {
   user-select: none;
 }
 
+input {
+  outline: none;
+}
+
+label {
+  cursor: pointer;
+  user-select: none;
+}
+
 img {
   max-width: 100%;
   display: block;

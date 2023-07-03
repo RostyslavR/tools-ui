@@ -1,0 +1,42 @@
+.wrapper {
+  position: relative;
+}
+
+.control-btn {
+  position: absolute;
+  top: 50%;
+  right: 2px;
+
+  border: none;
+  background-color: inherit;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.option-list {
+  position: absolute;
+  top: 1.5em;
+  left: 0;
+  z-index: 1;
+  max-height: 140px;
+  width: 100%;
+  overflow: auto;
+  border-radius: 0.5em;
+  background-color: #00cec9;
+}
+
+.option-item {
+  padding: 8px;
+  border-radius: 0.5em;
+  cursor: pointer;
+  &:hover {
+    background-color: #81ecec;
+  }
+}
+
+.chevron {
+  transition: transform 0.5s ease-in-out;
+}
+.chevron.open {
+  transform: rotate(180deg);
+}
